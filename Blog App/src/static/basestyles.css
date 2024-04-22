@@ -1,0 +1,83 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgba(216, 111, 111, 0.5);
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.nav-container nav a {
+    color: white;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+.nav-container nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    width: 45%;
+    margin: auto;
+}
+
+.name, .blogPost {
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+h2 {
+    margin: 0;
+    color: rgb(146, 4, 4);
+}
+
+.inputField {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+}
+
+.error {
+    color: red;
+}
+
+.submitBtn, .updateBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.post-preview img {
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+}
+
+.blogPost img {
+    max-width: 100%;
+    height: auto;
+}

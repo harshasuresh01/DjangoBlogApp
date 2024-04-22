@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="name" style="max-width: 330px; padding: 15px; margin: auto;">
+        <form method="post">
+            {% csrf_token %}
+            <h2 class="title">Login</h2>
+            <input type="email" name="email" id="inputEmail" class="inputField" placeholder="Email address" required autofocus>
+            <input type="password" name="password" id="inputPassword" class="inputField" placeholder="Password" required>
+            <div class="error">
+                {% for field in login_form %}
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                {% endfor %}
+                {% if login_form.non_field_errors %}
+                    {{ login_form.non_field_errors }}
+                {% endif %}
+            </div>
+            <button type="submit" class="submitBtn">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

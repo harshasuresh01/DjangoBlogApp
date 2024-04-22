@@ -1,0 +1,51 @@
+<style type="text/css">
+    .blog-post {
+        max-width: 700px;
+        margin: auto;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+    .blog-post-body {
+        padding: 20px;
+    }
+    .blog-post-image img {
+        width: 100%;
+        height: auto;
+    }
+    .blog-post-footer {
+        background-color: #f8f9fa;
+        padding: 10px 20px;
+        text-align: right;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+{% if blog_post %}
+<div class="blog-post">
+    <div class="blog-post-image">
+        <a href="{% url 'blog:detail' blog_post.slug %}">
+            <img src="{{ blog_post.image.url }}" alt="{{ blog_post.title }}">
+        </a>
+    </div>
+
+    <div class="blog-post-body">
+        <a href="{% url 'blog:detail' blog_post.slug %}">
+            <h2>{{ blog_post.title }}</h2>
+        </a>
+        <p>{{ blog_post.body|safe|truncatechars:250 }}</p>
+        {% if blog_post.author == request.user %}
+            <a href="{% url 'blog:edit' blog_post.slug %}" style="background-color: #007bff; color: white; padding: 5px 10px; text-decoration: none;">Update</a>
+        {% endif %}
+    </div>
+    <div class="blog-post-footer">
+        Updated on {{ blog_post.date_updated }} by {{ blog_post.author }}
+    </div>
+</div>
+{% else %}
+<div class="blog-post">
+    <div class="blog-post-body">
+        <h2>No results found</h2>
+        <p>There were no results that matched your search: "{{ query }}"</p>
+    </div>
+</div>
+{% endif %}

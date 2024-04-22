@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'basestyles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <a href="{% url 'home' %}">Home</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Log out</a>
+                    <a href="{% url 'account' %}">Account</a>
+                    <a href="{% url 'blog:create' %}" class="button">Create a New Post</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+                <input type="text" id="searchBar" placeholder="Search posts..." style="margin-left: 20px; padding: 5px;">
+                <button onclick="searchPosts()">Search</button> <!-- Added a search button -->
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'searchPosts.js' %}"></script>
+</body>
+</html>

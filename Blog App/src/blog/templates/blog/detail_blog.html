@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog_post.title }}</title>
+</head>
+<body>
+    <div class="container">
+        <div class="blogPost" style="max-width: 700px; margin: auto;">
+            <img src="{{ blog_post.image.url }}" alt="{{ blog_post.title }}">
+            <h2 class="title">{{ blog_post.title }}</h2>
+            <p>{{ blog_post.body|safe }}</p>
+            {% if blog_post.author == request.user %}
+                <a href="{% url 'blog:edit' blog_post.slug %}" class="updateBtn">Update</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

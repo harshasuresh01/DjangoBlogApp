@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/home.css">
+{% endblock %}
+{% block content %}
+<div class="content-area">
+    <h1>Welcome to the Harsha's Blog Platform</h1>
+    <div id="posts-container">
+        {% for post in blog_posts %}
+            <div class="post-preview">
+                <a href="{% url 'blog:detail' post.slug %}">
+                    <h2>{{ post.title }}</h2>
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+                    {% endif %}
+                    <p>{{ post.body|truncatewords:30 }}</p>
+                </a>
+            </div>
+        {% empty %}
+            <p>No posts to display.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
